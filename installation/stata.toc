@@ -1,0 +1,8 @@
+v 1.0
+d 'TRIMAP': A Stata package for trivariate plots
+d Asjad Naqvi
+d asjadnaqvi@gmail.com
+d https://medium.com/the-stata-guide
+p trimap
+
+

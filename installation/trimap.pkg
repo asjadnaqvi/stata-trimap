@@ -1,0 +1,26 @@
+v 1.0
+d {bf:TRIMAP}: A Stata package for trivariate maps.
+d See {bf:help trimap} after installation.
+d
+d Requires: Stata version 15 or higher.
+d
+d KW: Stata
+d KW: graphs
+d KW: ternary
+d
+d
+d Distribution-Date: 20240828
+d
+d This  version: 28 Aug 2024
+d First version: 28 Aug 2024
+d License: MIT
+d
+d Author: Asjad Naqvi (asjadnaqvi@gmail.com)
+d
+f trimap.ado
+f trimap.sthlp
+
+
+
+
+
