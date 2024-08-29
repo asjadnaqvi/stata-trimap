@@ -16,17 +16,25 @@ The command is still {it:beta} and lacks full set of features and checks. The co
 {cmd:trimap} {it:varL varR varB} {ifin}, 
                 {cmd:[} {cmd:frame}({it:frame name}) {cmd:cuts}({it:num}) {cmd:geo}({it:str}) {cmd:geopost}({it:str})  
                   {cmd:zoom} {cmd:fill} {cmd:points} {cmd:lines} {cmd:labels} {cmd:colorL}({it:str}) {cmd:colorR}({it:str}) {cmd:colorB}({it:str})
-                  {cmd:lwidth}({it:str}) {cmd:msize}({it:str}) {cmd:malpha}({it:num}) {cmd:mcolor}({it:str}) {cmd:mlcolor}({it:str}) {cmd:mlwidth}({it:str}) 
-                  {cmd:xscale}({it:num}) {cmd:yscale}({it:num})
-				  *                                  
+                  {cmdab:lw:idth}({it:str}) {cmd:msize}({it:str}) {cmd:malpha}({it:num}) {cmdab:mc:olor}({it:str}) {cmdab:mlc:olor}({it:str}) {cmdab:mlw:idth}({it:str}) 
+                  {cmdab:leglw:idth}({it:str}) {cmdab:leglc:olor}({it:str})
+                  {cmd:xscale}({it:num}) {cmd:yscale}({it:num}) *                                  
                 {cmd:]}
 
 {p 4 4 2}
 The options are described as follows:
 
+{synoptset 36 tabbed}{...}
+{synopthdr}
+{synoptline}
+
 {p2coldent : {opt trimap varL varR varB}}The order of the variables is {it:Left}, {it:Right} and {it:Bottom}.{p_end}
 
 {p2coldent : {opt frame(str)}}Define the frame in which the primary data exists. If no option is specified, then the current active frame is used.{p_end}
+
+{p2coldent : {opt lc:olor(str)}}Line color of map area outline. Default is {opt lcolor(white)}.{p_end}
+
+{p2coldent : {opt lw:idth(str)}}Line width of map area outline. Default is {opt lwidth(0.05)}.{p_end}
 
 {p2coldent : {opt geo(str)}}Define additional spatial layers that are passed onto the {stata help geoplot:geoplot} command.{p_end}
 
@@ -34,12 +42,12 @@ The options are described as follows:
 
 {p2coldent : {opt cuts(num)}}Total number of evenly-spaced segments in the triangle. Default is {opt cuts(5)}.{p_end}
 
-{p2coldent : {opt zoom(num)}}Zoom into the data based on the data extent of the bottom layer. This option will be enhanced further in later releases. Use this option if 
+{p2coldent : {opt zoom(num)}}Zoom into the data based on the data extent of the bottom layer. This option will be enhanced in later releases. Use this option if 
 the data points are bunched in very few triangles. Rather than increasing the cuts to show more variation, {opt zoom} rescales the axes while keeping the cuts the same.{p_end}
 
 {p2coldent : {opt lcolor(str)}}Outline colors of filled areas.{p_end}
 
-{it:Colors}
+{p 4 4 2}{it:{ul:Colors}}
 
 {p2coldent : {opt fill}}Add graduated colors to the legend triangles. See color options below.{p_end}
 
@@ -57,20 +65,21 @@ The convex combinations of all the in-between colors are auto generated. Please 
 as {it:O(n)=n^2}. So avoid going over 10 cuts which in any case renders the information meaningless as colors become indistinguishable. Here lower numbers are better.{p_end}
 
 
-{p 4 4 2}
-{it:Legend markers and lines}
+{p 4 4 2}{it:{ul:Legend markers and lines}}
 
-{p2coldent : {opt lwidth(str)}}Lines width. Default is {opt lwidth(0.25)}.{p_end}
+{p2coldent : {opt leglc:olor(str)}}Legend line color. Default is {opt leglcolor(black)}.{p_end}
+
+{p2coldent : {opt leglw:idth(str)}}Legend line width. Default is {opt leglwidth(0.25)}.{p_end}
 
 {p2coldent : {opt msize(str)}}Marker size. Default is {opt msize(1.5)}.{p_end}
 
 {p2coldent : {opt malpha(str)}}Marker fill intensity. Default is {opt malpha(90)} or 90% fill.{p_end}
 
-{p2coldent : {opt mcolor(str)}}Marker color if the option {opt points} is not specified. Default is {opt mcolor(black)}.{p_end}
+{p2coldent : {opt mc:olor(str)}}Marker color if the option {opt points} is not specified. Default is {opt mcolor(black)}.{p_end}
 
-{p2coldent : {opt mlcolor(str)}}Marker outline color. Default is {opt mlcolor(white)}.{p_end}
+{p2coldent : {opt mlc:olor(str)}}Marker outline color. Default is {opt mlcolor(white)}.{p_end}
 
-{p2coldent : {opt mlwidth(str)}}Marker outline width. Default is {opt mlwidth(0.1)}.{p_end}
+{p2coldent : {opt mlw:idth(str)}}Marker outline width. Default is {opt mlwidth(0.1)}.{p_end}
 
 {p2coldent : {opt xscale(num)}}Scale of the legend width relative to the full image. Default is {opt xscale(50)}.{p_end}
 
@@ -78,10 +87,12 @@ as {it:O(n)=n^2}. So avoid going over 10 cuts which in any case renders the info
 
 {p2coldent : {opt *}}All other twoway options not elsewhere specified.{p_end}
 
+{synoptline}
+{p2colreset}{...}
+
 {title:Dependencies}
 
 The following packages are required for {cmd:trimap}:
-
 
 {stata ssc install ternary, replace}
 {stata ssc install geoplot, replace}
@@ -107,7 +118,7 @@ Repository   : {browse "https://github.com/asjadnaqvi/stata-trimap":GitHub}
 Keywords     : Stata, graph, ternary, triplot, trimap, tri-variate map
 License      : {browse "https://opensource.org/licenses/MIT":MIT}
 
-Authors      : {browse "https://github.com/asjadnaqvi":Asjad Naqvi}
+Author       : {browse "https://github.com/asjadnaqvi":Asjad Naqvi}
 E-mail       : asjadnaqvi@gmail.com
 Twitter/X    : {browse "https://x.com/AsjadNaqvi":@AsjadNaqvi}
 
@@ -134,15 +145,17 @@ Naqvi, A. (2024). Stata package "ternary" version 1.0. Release date 28 August 20
 
 {title:References}
 
-{p 4 8 2}Jann, B. (2024). GEOPLOT
+{p 4 8 2}Jann, B. (2005). moremata: Stata module (Mata) to provide various functions. Available from {browse "https://ideas.repec.org/c/boc/bocode/s455001.html"}.
 
 {p 4 8 2}Jann, B. (2018). {browse "https://www.stata-journal.com/article.html?article=gr0075":Color palettes for Stata graphics}. The Stata Journal 18(4): 765-785.
 
 {p 4 8 2}Jann, B. (2022). {browse "https://ideas.repec.org/p/bss/wpaper/43.html":Color palettes for Stata graphics: An update}. University of Bern Social Sciences Working Papers No. 43. 
 
+{p 4 8 2}Jann, B. (2023). geoplot: Stata module to draw maps. Available from {browse "https://ideas.repec.org/c/boc/bocode/s459211.html"}.
+
 
 {title:Other visualization packages}
 
 {psee}
-    {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb joyplot}, {helpb marimekko}, {helpb polarspike}, 
-	{helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb splineplot}, {helpb streamplot}, {helpb sunburst}, {helpb ternary}, {helpb treecluster}, {helpb treemap}, {helpb trimap}, {helpb waffle}
+    {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb joyplot}, 
+	{helpb marimekko}, {helpb polarspike}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb splinefit}, {helpb streamplot}, {helpb sunburst}, {helpb treecluster}, {helpb treemap}, {helpb waffle}

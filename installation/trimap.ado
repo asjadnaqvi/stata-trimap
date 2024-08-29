@@ -12,6 +12,7 @@ program trimap, sortpreserve
 	syntax varlist(min=3 max=3 numeric) [if] [in]  ///
 		[ , frame(string) cuts(real 5) showlabel LColor(string) LWidth(string) format(str)  ] ///
 		[ msize(string) malpha(real 90) MLColor(string) MLWIDth(string) MColor(string) ]	///
+		[ LEGLColor(string) LEGLwidth(string) ] ///
 		[ colorR(string) colorL(string) colorB(string)  ] ///
 		[ fill points lines labels geo(string) geopost(string) 	 ]	///
 		[ zoom xscale(real 50) yscale(real 100) * ]
@@ -120,18 +121,9 @@ preserve
 	
 	
 	**** barycentric coordinates
-	
-	
-	
-	local xL = 0                                /* triangle coordinates */
-	local xR = 1
-	local yB = 0
 
-	local width = `xR' - `xL'
-	local height = `width' * sqrt(3)/2	
-	
-	gen double _yvar = `yB' + `height' * _R 
-	gen double _xvar = `xR' - `width' * (_R/2   + _L) 
+	gen double _yvar = _R * sqrt(3) / 2 
+	gen double _xvar = 1 - (_R/2 + _L) 
 
 		
 	// assign triangles to points
@@ -187,9 +179,6 @@ preserve
 		}
 	}	
 
-
-	
-	
 	
 	*** down triangles
 
@@ -269,7 +258,7 @@ preserve
 	
 	
 	geoplot ///
-		(area `frame' i.tri_id, color(`clrlist') lcolor(`lcolor') )  ///
+		(area `frame' i.tri_id, color(`clrlist') lcolor(`lcolor') lwidth(`lwidth') )  ///
 		`geo'	///
 		, `geopost' tight legend(off) name(_map, replace) nodraw	
 	
@@ -279,23 +268,16 @@ restore
 	
 	
 	
-	di "Passed 1"
-	
 	preserve
-		ternary `varlist', cuts(`cuts') mc(black) malpha(100) msize(2) `fill' `zoom' `points' `lines' `labels' ///
-		fxsize(`xscale') fysize(`yscale') ///
+		ternary `varlist', cuts(`cuts') mc(`mcolor') malpha(`malpha') msize(`msize') `fill' `zoom' `points' `lines' `labels' ///
+		fxsize(`xscale') fysize(`yscale') lcolor(`leglcolor') lwidth(`leglwidth') ///
 		name(_legend, replace) nodraw
 		
 	restore		
 	
 	
-	di "Passed 2"
-	
 	  graph combine _map _legend, ///
 		imargin(zero) `options'
-	
-	
-	di "Passed 3"
 	
 	
 		*/
