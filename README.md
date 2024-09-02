@@ -64,14 +64,6 @@ graph set window fontface "Arial Narrow"
 The syntax for the latest version is as follows:
 
 ```stata
-
-```
-
-See the help file `help trimap` for details.
-
-The most basic use is as follows:
-
-```stata
  trimap varL varR varB [if] [in], [ frame(frame name) cuts(num) geo(str) geopost(str) zoom fill points lines labels colorL(str) colorR(str) colorB(str) lwidth(str) msize(str) malpha(num) mcolor(str) mlcolor(str) mlwidth(str) leglwidth(str)
                leglcolor(str) xscale(num) yscale(num) * ]
 ```
@@ -120,10 +112,21 @@ Naqvi, A. (2024). Stata package "trimap" version 1.0. Release date 28 August 202
 
 ### Data setup
 
-Get the data
+Get the shapefiles
 
 ```stata
-SYNTAX 
+foreach x in NUTS0 NUTS0_shp NUTS1 NUTS1_shp NUTS2 NUTS_shp NUTS3 NUTS3_shp {
+	copy "https://github.com/asjadnaqvi/stata-trimap/raw/main/data/`x'.dta" "`x'.dta", replace
+}
+```
+
+
+Get the data files
+
+```stata
+foreach x in NUTS3_pop NUTS3_gva NUTS2_edu NUTS2_tourstay {
+	copy "https://github.com/asjadnaqvi/stata-trimap/raw/main/data/`x'.dta" "`x'.dta", replace
+}
 ```
 
 
