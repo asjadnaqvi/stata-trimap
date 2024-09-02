@@ -11,7 +11,7 @@ program trimap, sortpreserve
 	
 	syntax varlist(min=3 max=3 numeric) [if] [in]  ///
 		[ , frame(string) cuts(real 5) showlabel LColor(string) LWidth(string) format(str)  ] ///
-		[ msize(string) malpha(real 90) MLColor(string) MLWIDth(string) MColor(string) ]	///
+		[ msize(string) malpha(real 90) MLColor(string) MLWIDth(string) MColor(string) MSYMbol(string) TICKSize(string) LABColor(string) ]	///
 		[ LEGLColor(string) LEGLwidth(string) ] ///
 		[ colorR(string) colorL(string) colorB(string)  ] ///
 		[ fill points lines labels geo(string) geopost(string) 	 ]	///
@@ -269,15 +269,17 @@ restore
 	
 	
 	preserve
-		ternary `varlist', cuts(`cuts') mc(`mcolor') malpha(`malpha') msize(`msize') `fill' `zoom' `points' `lines' `labels' ///
-		fxsize(`xscale') fysize(`yscale') lcolor(`leglcolor') lwidth(`leglwidth') ///
+		
+		if "`points'" == "" & "`fill'" =="" local points points
+		
+		ternary `varlist', cuts(`cuts') mc(`mcolor') malpha(`malpha') msize(`msize') `fill' `zoom' `points' `lines' `labels' colorB(`colorB') colorR(`colorR') colorL(`colorL') ///
+		fxsize(`xscale') fysize(`yscale') lcolor(`leglcolor') lwidth(`leglwidth') msymbol(`msymbol') ticksize(`ticksize') mlcolor(`mlcolor') mlwidth(`mlwidth') labcolor(`labcolor')  ///
 		name(_legend, replace) nodraw
 		
 	restore		
 	
 	
-	  graph combine _map _legend, ///
-		imargin(zero) `options'
+	graph combine _map _legend, imargin(zero) `options'
 	
 	
 		*/

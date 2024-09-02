@@ -2,7 +2,7 @@ cff-version: 1.2.0
 authors:
 - family-names: "Naqvi"
   given-names: "Asjad"
-title: "Stata package ``ternary''"
+title: "Stata package ``trimap''"
 version: 1.0
 date-released: 2024-08-28
-url: "https://github.com/asjadnaqvi/stata-ternary"
+url: "https://github.com/asjadnaqvi/stata-trimap"

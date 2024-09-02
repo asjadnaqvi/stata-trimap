@@ -9,10 +9,11 @@
 
 {p 4 4 2}
 The command is still {it:beta} and lacks full set of features and checks. The command is a wrapper for {stata help geoplot:geoplot} and {stata help ternary:ternary}.
+All {stata help ternary:ternary} customization options can be used to generate the legend. 
 
 {marker syntax}{title:Syntax}
-{p 8 15 2}
 
+{p 8 15 2}
 {cmd:trimap} {it:varL varR varB} {ifin}, 
                 {cmd:[} {cmd:frame}({it:frame name}) {cmd:cuts}({it:num}) {cmd:geo}({it:str}) {cmd:geopost}({it:str})  
                   {cmd:zoom} {cmd:fill} {cmd:points} {cmd:lines} {cmd:labels} {cmd:colorL}({it:str}) {cmd:colorR}({it:str}) {cmd:colorB}({it:str})
@@ -67,23 +68,25 @@ as {it:O(n)=n^2}. So avoid going over 10 cuts which in any case renders the info
 
 {p 4 4 2}{it:{ul:Legend markers and lines}}
 
-{p2coldent : {opt leglc:olor(str)}}Legend line color. Default is {opt leglcolor(black)}.{p_end}
+{p2coldent : {opt leglc:olor(str)}}Legend line color. Default is {opt leglcolor(gs8)}.{p_end}
 
-{p2coldent : {opt leglw:idth(str)}}Legend line width. Default is {opt leglwidth(0.25)}.{p_end}
+{p2coldent : {opt leglw:idth(str)}}Legend line width. Default is {opt leglwidth(0.15)}.{p_end}
+
+{p2coldent : {opt labc:olor(str)}}Label color. Default is {opt lcolor(black)}. Also affects tick colors.{p_end}
+
+{p2coldent : {opt ticks:ize(str)}}Axes tick size. Default is {opt ticks(1)}.{p_end}
+
+{p2coldent : {opt msym:bol(str)}}Marker symbol. Default is {opt msym(circle)}.{p_end}
 
 {p2coldent : {opt msize(str)}}Marker size. Default is {opt msize(1.5)}.{p_end}
 
-{p2coldent : {opt malpha(str)}}Marker fill intensity. Default is {opt malpha(90)} or 90% fill.{p_end}
+{p2coldent : {opt malpha(str)}}Marker fill intensity if the options {opt points} is used. Default is {opt malpha(90)} or 90% fill. For simple points use for example {opt mcolor(%50)}.{p_end}
 
 {p2coldent : {opt mc:olor(str)}}Marker color if the option {opt points} is not specified. Default is {opt mcolor(black)}.{p_end}
 
 {p2coldent : {opt mlc:olor(str)}}Marker outline color. Default is {opt mlcolor(white)}.{p_end}
 
 {p2coldent : {opt mlw:idth(str)}}Marker outline width. Default is {opt mlwidth(0.1)}.{p_end}
-
-{p2coldent : {opt xscale(num)}}Scale of the legend width relative to the full image. Default is {opt xscale(50)}.{p_end}
-
-{p2coldent : {opt yscale(num)}}Scale of the legend height relative to the full image. Default is {opt yscale(100)}. Ideally don't touch this option and modify {opt xscale()} instead.{p_end}
 
 {p2coldent : {opt *}}All other twoway options not elsewhere specified.{p_end}
 
