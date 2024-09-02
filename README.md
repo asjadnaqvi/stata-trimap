@@ -179,7 +179,7 @@ which gives us:
 
 
 ```stata
-ternary y99prop y15prop y64prop, points
+ternary y99prop y15prop y64prop, points 
 ```
 
 <img src="/figures/ternary_test.png" width="100%">
@@ -189,26 +189,29 @@ ternary y99prop y15prop y64prop, points
 ### Test the command
 
 ```stata
-trimap y99prop y15prop y64prop, frame(nuts3)
+trimap y99prop y15prop y64prop, frame(nuts3) mlc(white)
 ```
 
 <img src="/figures/trimap1.png" width="100%">
 
 
 ```stata
-trimap y99prop y15prop y64prop, frame(nuts3) zoom
+trimap y99prop y15prop y64prop, frame(nuts3) mlc(white) ///
+ geo( (line nuts0, lc(white) lw(0.05)) )
 ```
 
 <img src="/figures/trimap2.png" width="100%">
 
 ```stata
-trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(4)
+trimap y99prop y15prop y64prop, frame(nuts3) zoom mlc(white) cuts(4) ///
+	geo( (line nuts0, lc(white) lw(0.05)) )	
 ```
 
 <img src="/figures/trimap3.png" width="100%">
 
 ```stata
-trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(4) geo( (line nuts1, lc(white) lw(0.05)) )
+trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(4) mlc(white)  ///
+	geo((line nuts0, lc(white) lw(0.05)))
 ```
 
 <img src="/figures/trimap4.png" width="100%">
@@ -232,7 +235,7 @@ trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(4) ///
 ```stata
 trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(4) ///
 	geo( (line nuts1, lc(white) lw(0.05)) (line nuts0, lc(white) lw(0.2)) )	///
-	fill msize(0.5) mcolor(white%50) leglc(black)
+	fill msize(0.5) mcolor(white%50) leglc(black) mlc(white)
 ```
 
 <img src="/figures/trimap7.png" width="100%">
@@ -240,7 +243,7 @@ trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(4) ///
 ```stata
 trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(2) ///
 	geo( (line nuts1, lc(white) lw(0.05)) (line nuts0, lc(white) lw(0.2)) )	///
-	fill msize(0.5) mcolor(white%60) leglc(black)
+	fill msize(0.5) mcolor(white%60) leglc(black) mlc(white)	
 ```
 
 <img src="/figures/trimap8.png" width="100%">
@@ -248,7 +251,7 @@ trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(2) ///
 ```stata
 trimap y99prop y15prop y64prop, frame(nuts3) zoom cuts(4) ///
 	geo( (line nuts1, lc(white) lw(0.05)) (line nuts0, lc(white) lw(0.2)) )	///
-	fill msize(0.5) mcolor(white%60) leglc(black) colorB(#FFFF00) colorL(#F11D8C) colorR(#01A0C6)
+	fill msize(0.5) mcolor(white%60) leglc(black) colorB(#FFFF00) colorL(#F11D8C) colorR(#01A0C6) mlc(white)
 ```
 
 <img src="/figures/trimap9.png" width="100%">
@@ -296,7 +299,7 @@ merge 1:1 NUTS_ID using NUTS2_edu
 drop if _m==2
 drop _m
 
-trimap edu_primary  edu_secondary edu_tertiary, frame(nuts2)  cuts(2)  ///
+trimap edu_primary  edu_secondary edu_tertiary, frame(nuts2) zoom  cuts(2)  ///
 	geo( (line nuts1, lc(white) lw(0.05)) (line nuts0, lc(white) lw(0.2)) )	///
 	fill msize(0.4) mcolor(black%60) mlc(none) 
 ```
@@ -309,7 +312,7 @@ merge 1:1 NUTS_ID using NUTS2_tourstay.dta
 drop if _m==2
 drop _m	
 
-trimap  tour_hotels tour_other tour_camping , frame(nuts2)  cuts(5)  ///
+trimap  tour_hotels tour_other tour_camping , frame(nuts2)  cuts(4) zoom  ///
 	geo( (line nuts1, lc(white) lw(0.05)) (line nuts0, lc(white) lw(0.2)) )	///
 	fill msize(0.4) mcolor(black%60) mlc(none) 
 ```
