@@ -10,6 +10,9 @@
 
 ---
 
+![trimap_banner](https://github.com/user-attachments/assets/4e1dc4ed-24e6-44de-a29a-ec700b6b74e0)
+
+
 # trimap v1.0
 (28 Aug 2024)
 
