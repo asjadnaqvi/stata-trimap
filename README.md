@@ -10,7 +10,8 @@
 
 ---
 
-![trimap_banner](https://github.com/user-attachments/assets/4e1dc4ed-24e6-44de-a29a-ec700b6b74e0)
+![trimap_banner](https://github.com/user-attachments/assets/a06e7bc6-3e2e-4356-adf1-48aadd511d3a)
+
 
 
 # trimap v1.0
