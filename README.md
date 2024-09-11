@@ -8,11 +8,11 @@
 
 [Installation](#Installation) | [Syntax](#Syntax) | [Examples](#Examples) | [Feedback](#Feedback) | [Change log](#Change-log)
 
----
+
 
 ![trimap_banner](https://github.com/user-attachments/assets/a06e7bc6-3e2e-4356-adf1-48aadd511d3a)
 
-
+---
 
 # trimap v1.0
 (28 Aug 2024)
