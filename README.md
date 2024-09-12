@@ -1,21 +1,17 @@
 
-
-
 ![StataMin](https://img.shields.io/badge/stata-2015-blue) ![issues](https://img.shields.io/github/issues/asjadnaqvi/stata-trimap) ![license](https://img.shields.io/github/license/asjadnaqvi/stata-trimap) ![Stars](https://img.shields.io/github/stars/asjadnaqvi/stata-trimap) ![version](https://img.shields.io/github/v/release/asjadnaqvi/stata-trimap) ![release](https://img.shields.io/github/release-date/asjadnaqvi/stata-trimap)
 
 
----
-
 [Installation](#Installation) | [Syntax](#Syntax) | [Examples](#Examples) | [Feedback](#Feedback) | [Change log](#Change-log)
 
-
+---
 
 ![trimap_banner](https://github.com/user-attachments/assets/a06e7bc6-3e2e-4356-adf1-48aadd511d3a)
 
 ---
 
-# trimap v1.0
-(28 Aug 2024)
+# trimap v1.1
+(12 Sep 2024)
 
 This package provides the ability to draw trimaps Stata.
 
@@ -30,7 +26,7 @@ The SSC version (**coming soon**):
 
 ```
 
-Or it can be installed from GitHub (**v1.0**):
+Or it can be installed from GitHub (**v1.1**):
 
 ```stata
 net install trimap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-trimap/main/installation/") replace
@@ -68,8 +64,11 @@ graph set window fontface "Arial Narrow"
 The syntax for the latest version is as follows:
 
 ```stata
- trimap varL varR varB [if] [in], [ frame(frame name) cuts(num) geo(str) geopost(str) zoom fill points lines labels colorL(str) colorR(str) colorB(str) lwidth(str) msize(str) malpha(num) mcolor(str) mlcolor(str) mlwidth(str) leglwidth(str)
-               leglcolor(str) xscale(num) yscale(num) * ]
+        trimap varL varR varB [if] [in], 
+			[ frame(frame name) cuts(num) normalize(1|100) geo(geoplot layers) geopost(g) zoom fill
+               points lines labels colorL(str) colorR(str) colorB(str) lwidth(str) msize(str) malpha(num) mcolor(str) mlcolor(str)
+               mlwidth(str) leglwidth(str) leglcolor(str) mlabel(var) mlabsize(str) mlabcolor(str) mlabposition(str) xscale(num)
+               yscale(num) * ]
 ```
 
 
@@ -94,15 +93,15 @@ Software packages take countless hours of programming, testing, and bug fixing. 
    author = {Naqvi, Asjad},
    title = {Stata package ``trimap''},
    url = {https://github.com/asjadnaqvi/stata-trimap},
-   version = {1.0},
-   date = {2024-08-28}
+   version = {1.1},
+   date = {2024-09-12}
 }
 ```
 
 *or simple text*
 
 ```
-Naqvi, A. (2024). Stata package "trimap" version 1.0. Release date 28 August 2024. https://github.com/asjadnaqvi/stata-trimap.
+Naqvi, A. (2024). Stata package "trimap" version 1.1. Release date 12 September 2024. https://github.com/asjadnaqvi/stata-trimap.
 ```
 
 
@@ -205,6 +204,14 @@ trimap y99prop y15prop y64prop, frame(nuts3) mlc(white) ///
 ```
 
 <img src="/figures/trimap2.png" width="100%">
+
+```stata
+trimap y99prop y15prop y64prop, frame(nuts3) zoom mlc(white) cuts(4) ///
+	geo( (line nuts0, lc(white) lw(0.05)) )	 norm(1)
+```
+
+<img src="/figures/trimap2_1.png" width="100%">
+
 
 ```stata
 trimap y99prop y15prop y64prop, frame(nuts3) zoom mlc(white) cuts(4) ///
@@ -331,6 +338,10 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-trimap/issues) to rep
 
 
 ## Change log
+
+**v1.1 (12 Sep 2024)**
+- Package aligned with `ternary` by adding options `norm()`, `mlabel()`, `mlabcolor()`, `mlabposition()`, `mlabsize()`.
+- Minor cleanups.
 
 **v1.0 (28 Aug 2024)**
 - First release.
