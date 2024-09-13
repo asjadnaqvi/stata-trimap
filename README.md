@@ -310,12 +310,23 @@ merge 1:1 NUTS_ID using NUTS2_edu
 drop if _m==2
 drop _m
 
-trimap edu_primary  edu_secondary edu_tertiary, frame(nuts2) zoom  cuts(2)  ///
+trimap edu_primary  edu_secondary edu_tertiary, frame(nuts2)  cuts(2)  ///
 	geo( (line nuts1, lc(white) lw(0.05)) (line nuts0, lc(white) lw(0.2)) )	///
 	fill msize(0.4) mcolor(black%60) mlc(none) 
 ```
 
 <img src="/figures/trimap13.png" width="100%">
+
+
+```
+trimap edu_primary  edu_secondary edu_tertiary, frame(nuts2) zoom  cuts(2)  ///
+	geo( (line nuts1, lc(white) lw(0.05)) (line nuts0, lc(white) lw(0.2)) )	///
+	fill msize(0.4) mcolor(black%60) mlc(none) 
+```
+
+<img src="/figures/trimap13_zoom.png" width="100%">
+
+
 
 
 ```stata
@@ -341,6 +352,7 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-trimap/issues) to rep
 
 **v1.1 (12 Sep 2024)**
 - Package aligned with `ternary` by adding options `norm()`, `mlabel()`, `mlabcolor()`, `mlabposition()`, `mlabsize()`.
+- Better `zoom`.
 - Minor cleanups.
 
 **v1.0 (28 Aug 2024)**
