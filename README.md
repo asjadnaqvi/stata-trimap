@@ -66,10 +66,9 @@ The syntax for the latest version is as follows:
 
 ```stata
         trimap varL varR varB [if] [in], 
-			[ frame(frame name) cuts(num) normalize(1|100) geo(geoplot layers) geopost(g) zoom fill
-               points lines labels colorL(str) colorR(str) colorB(str) lwidth(str) msize(str) malpha(num) mcolor(str) mlcolor(str)
-               mlwidth(str) leglwidth(str) leglcolor(str) mlabel(var) mlabsize(str) mlabcolor(str) mlabposition(str) xscale(num)
-               yscale(num) * ]
+	[ frame(frame name) cuts(num) normalize(1|100) geo(layers) geopost(options) zoom fill
+          points lines labels colorL(str) colorR(str) colorB(str) lwidth(str) msize(str) malpha(num) mcolor(str) mlcolor(str)
+          mlwidth(str) leglwidth(str) leglcolor(str) mlabel(var) mlabsize(str) mlabcolor(str) mlabposition(str) xscale(num) yscale(num) * ]
 ```
 
 
