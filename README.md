@@ -35,6 +35,7 @@ net install trimap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-tri
 The following packages are required to run this command:
 
 ```stata
+ssc install geoplot, replace
 ssc install ternary, replace
 ssc install palettes, replace
 ssc install colrspace, replace
