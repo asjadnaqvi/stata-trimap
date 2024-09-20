@@ -118,7 +118,7 @@ Naqvi, A. (2024). Stata package "trimap" version 1.1. Release date 12 September 
 Get the shapefiles
 
 ```stata
-foreach x in NUTS0 NUTS0_shp NUTS1 NUTS1_shp NUTS2 NUTS_shp NUTS3 NUTS3_shp {
+foreach x in NUTS0 NUTS0_shp NUTS1 NUTS1_shp NUTS2 NUTS2_shp NUTS3 NUTS3_shp {
 	copy "https://github.com/asjadnaqvi/stata-trimap/raw/main/data/`x'.dta" "`x'.dta", replace
 }
 ```
